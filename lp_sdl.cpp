@@ -38,24 +38,16 @@ void lpInit(void* _parentWindow)
 
 void lpBeginModal()
 {
-  //if (parentWindow!=NULL) { EnableWindow(parentWindow,FALSE); }
+
 }
 
 void lpEndModal()
 { 
-  //if (parentWindow!=NULL) { EnableWindow(parentWindow,TRUE); }
+
 }
 
 bool lpEventsPending()
 {
-  /*
-  MSG message;
-    
-  if (PeekMessage(&message,NULL,0,0,PM_NOREMOVE))
-  {
-    return true;
-  }
-  */
   return (SDL_PollEvent(0)==1);
 }
 
@@ -125,19 +117,6 @@ void lpUpdate()
 void lpCleanUp()
 {
   SDL_Quit();
-  /*
-  if (window!=NULL)
-  {
-    DestroyWindow(window);
-    window = NULL;
-  }
-
-  if(classAtom!=0)
-  {
-    UnregisterClass(LP_WNDCLASSNAME,GetModuleHandle(NULL));
-    classAtom = 0;
-  } 
-  */  
 }
 
 bool lpWindowCloseRequested()
@@ -217,25 +196,5 @@ void lpBlit(int width,int height,unsigned char* data)
   
   SDL_UnlockSurface(screen);
 
-  SDL_UpdateRect(screen,0,0,0,0);
-        
-  /*
-  BITMAPINFOHEADER bitmapInfo;  
-  
-  ZeroMemory(&bitmapInfo,sizeof(BITMAPINFOHEADER));  
-  
-  bitmapInfo.biSize = sizeof(BITMAPINFOHEADER);     
-  bitmapInfo.biWidth = width;
-  bitmapInfo.biHeight = -height;
-  bitmapInfo.biPlanes = 1;
-  bitmapInfo.biBitCount = 32;
-  bitmapInfo.biCompression = BI_RGB;  
-  bitmapInfo.biSizeImage = (bitmapInfo.biWidth*bitmapInfo.biHeight*bitmapInfo.biBitCount)/8;
-
-  HDC dc = GetDC(window);
-  
-  SetDIBitsToDevice(dc,0,0,width,height,0,0,0,height,data,(LPBITMAPINFO)&bitmapInfo,DIB_RGB_COLORS);
-
-  ReleaseDC(window,dc);
-  */
+  SDL_UpdateRect(screen,0,0,0,0);        
 }
